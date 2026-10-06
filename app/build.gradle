@@ -1,0 +1,39 @@
+plugins {
+    id "com.android.application"
+}
+
+android {
+    namespace "com.tradingsentinel.ai"
+    compileSdk 35
+
+    defaultConfig {
+        applicationId "com.tradingsentinel.ai"
+        minSdk 26
+        targetSdk 35
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            shrinkResources false
+        }
+    }
+
+    sourceSets {
+        main {
+            assets.srcDirs += ["$buildDir/generated/web-assets"]
+        }
+    }
+
+    tasks.register("prepareWebAssets", Copy) {
+        from("index.html")
+        from("src")
+        into("$buildDir/generated/web-assets")
+    }
+
+    tasks.named("preBuild").configure {
+        dependsOn(tasks.named("prepareWebAssets"))
+    }
+}
