@@ -11,7 +11,7 @@ android {
         minSdk 26
         targetSdk 35
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
     }
 
     buildTypes {
@@ -30,11 +30,12 @@ android {
 
     tasks.register("prepareWebAssets", Copy) {
         from(rootProject.file("index.html"))
+        into("$buildDir/generated/web-assets")
         from(rootProject.file("src")) {
+            into("src")
             include("*.js")
             include("*.css")
         }
-        into("$buildDir/generated/web-assets")
     }
 
     tasks.named("preBuild").configure {
