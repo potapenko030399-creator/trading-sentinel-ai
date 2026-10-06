@@ -1,0 +1,5 @@
+window.Indicators={
+ema(a,n){if(!a.length)return[];const k=2/(n+1),o=[a[0]];for(let i=1;i<a.length;i++)o.push(a[i]*k+o[i-1]*(1-k));return o},
+rsi(a,n=14){let g=0,l=0;for(let i=1;i<=n&&i<a.length;i++){const d=a[i]-a[i-1];if(d>0)g+=d;else l-=d}let ag=g/n,al=l/n,o=Array(n).fill(null);for(let i=n+1;i<a.length;i++){const d=a[i]-a[i-1];ag=(ag*(n-1)+Math.max(d,0))/n;al=(al*(n-1)+Math.max(-d,0))/n;o.push(al===0?100:100-100/(1+ag/al))}return o},
+macd(a,f=12,s=26,n=9){const e1=this.ema(a,f),e2=this.ema(a,s),m=a.map((_,i)=>e1[i]-e2[i]),sig=this.ema(m.slice(s-1),n),signal=Array(s-1).fill(null).concat(sig);return{macd:m,signal,hist:m.map((v,i)=>signal[i]==null?null:v-signal[i])}},
+levels(a){let hi=[],lo=[];for(let i=2;i<a.length-2;i++){if(a[i]>a[i-1]&&a[i]>a[i+1]&&a[i]>a[i-2]&&a[i]>a[i+2])hi.push(a[i]);if(a[i]<a[i-1]&&a[i]<a[i+1]&&a[i]<a[i-2]&&a[i]<a[i+2])lo.push(a[i])}return{support:lo.length?Math.max(...lo.slice(-5)):Math.min(...a),resistance:hi.length?Math.min(...hi.slice(-5)):Math.max(...a)}}};
