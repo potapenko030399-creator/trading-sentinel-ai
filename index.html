@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Trading Sentinel AI</title><link rel="stylesheet" href="src/style.css"></head>
+<body><div class="app"><header><div><h1>Trading Sentinel AI</h1><small>REAL SCREEN ANALYTICS</small></div><div><span id="status">● READY</span> <button id="start">Захват экрана</button> <button id="stop">Стоп</button></div></header>
+<section class="panel"><div class="screen"><video id="screen" autoplay muted playsinline></video><canvas id="overlay"></canvas></div><div class="controls">
+<label>Формат <select id="format"><option>Auto</option><option>Свечи</option><option>Линия</option><option>Bars</option><option>Area</option><option>Heikin Ashi</option></select></label>
+<label>Горизонт <select id="horizon"><option>1</option><option>2</option><option>3</option><option selected>5</option><option>10</option></select></label><label>OCR <select id="ocr"><option value="on">ON</option><option value="off">OFF</option></select></label><button id="analyse">Анализировать</button></div></section>
+<section class="grid"><article class="panel signal"><small>DECISION ENGINE</small><div id="decision">ОЖИДАНИЕ</div><div id="direction">—</div><p id="why">Запустите захват экрана.</p><hr><div>Уверенность <b id="confidence">—</b></div><div>Риск <b id="risk">—</b></div><div>Сила <b id="strength">—</b></div></article>
+<article class="panel"><h2>Свечи и уровни</h2><p>Точек: <b id="candles">—</b></p><p>Цена: <b id="price">—</b></p><p>Тренд: <b id="trend">—</b></p><p>Поддержка: <b id="support">—</b></p><p>Сопротивление: <b id="resistance">—</b></p></article>
+<article class="panel"><h2>RSI / MACD</h2><p>RSI(14): <b id="rsi">—</b></p><p>MACD: <b id="macd">—</b></p><p>Signal: <b id="macdSignal">—</b></p><p>Histogram: <b id="hist">—</b></p></article>
+<article class="panel"><h2>OCR</h2><p>Цена: <b id="ocrPrice">—</b></p><p>Текст: <b id="ocrText">—</b></p></article></section>
+<section class="panel"><h2>История</h2><div id="events"></div></section></div>
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script><script src="src/indicators.js"></script><script src="src/vision.js"></script><script src="src/app.js"></script></body></html>
