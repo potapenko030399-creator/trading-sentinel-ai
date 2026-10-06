@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Trading Sentinel AI</title><link rel="stylesheet" href="src/style.css"></head>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Trading Sentinel AI</title><link rel="stylesheet" href="style.css"></head>
 <body><div class="app"><header><div><h1>Trading Sentinel AI</h1><small>REAL SCREEN ANALYTICS</small></div><div><span id="status">● READY</span> <button id="start">Захват экрана</button> <button id="stop">Стоп</button></div></header>
 <section class="panel"><div class="screen"><video id="screen" autoplay muted playsinline></video><canvas id="overlay"></canvas></div><div class="controls">
 <label>Формат <select id="format"><option>Auto</option><option>Свечи</option><option>Линия</option><option>Bars</option><option>Area</option><option>Heikin Ashi</option></select></label>
@@ -9,4 +9,4 @@
 <article class="panel"><h2>RSI / MACD</h2><p>RSI(14): <b id="rsi">—</b></p><p>MACD: <b id="macd">—</b></p><p>Signal: <b id="macdSignal">—</b></p><p>Histogram: <b id="hist">—</b></p></article>
 <article class="panel"><h2>OCR</h2><p>Цена: <b id="ocrPrice">—</b></p><p>Текст: <b id="ocrText">—</b></p></article></section>
 <section class="panel"><h2>История</h2><div id="events"></div></section></div>
-<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script><script src="src/indicators.js"></script><script src="src/vision.js"></script><script src="src/app.js"></script></body></html>
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script><script src="indicators.js"></script><script src="vision.js"></script><script src="app.js"></script></body></html>
