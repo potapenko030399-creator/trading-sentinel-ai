@@ -1,4 +1,4 @@
-name: Build Trading Sentinel AI APK (fixed)
+name: Build Trading Sentinel AI APK
 
 on:
   push:
@@ -29,15 +29,20 @@ jobs:
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v6
         with:
-          gradle-version: "8.9"
+          gradle-version: "8.10.2"
 
       - name: Build release APK
         run: gradle :app:assembleRelease --no-daemon
 
-      - name: Upload APK
+      - name: Locate APK
+        run: |
+          find app/build/outputs -type f -name "*.apk" -print
+          test -n "$(find app/build/outputs -type f -name '*.apk' -print -quit)"
+
+      - name: Upload installable APK
         uses: actions/upload-artifact@v6
         with:
-          name: TradingSentinelAI-release
-          path: app/build/outputs/apk/release/app-release.apk
+          name: TradingSentinelAI-APK
+          path: app/build/outputs/**/*.apk
           if-no-files-found: error
           retention-days: 30
